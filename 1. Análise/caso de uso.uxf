@@ -1,0 +1,23 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLActor</id><coordinates><x>320</x><y>185</y><w>120</w><h>120</h></coordinates><panel_attributes>ADMINISTRADOR
+
+fg=#5A0682</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>320</x><y>45</y><w>120</w><h>40</h></coordinates><panel_attributes>1. Efetuar Login</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>480</x><y>145</y><w>120</w><h>40</h></coordinates><panel_attributes>2. Cadastrar 
+Novo Filme</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>410</x><y>335</y><w>140</w><h>40</h></coordinates><panel_attributes>5. Consultar 
+Todos Flmes</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>300</x><y>375</y><w>160</w><h>40</h></coordinates><panel_attributes>6. Consultar Filmes
+Por Nome</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>550</x><y>195</y><w>110</w><h>40</h></coordinates><panel_attributes>3. Alterar 
+Filme</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>480</x><y>245</y><w>120</w><h>40</h></coordinates><panel_attributes>4. Remover 
+Filme</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>190</x><y>335</y><w>150</w><h>40</h></coordinates><panel_attributes>7. Consultar Filme
+Por ID</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>85</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>175</y><w>100</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>80;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>195</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>215</y><w>100</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>80;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>285</y><w>60</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>40;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>285</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>285</y><w>60</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+
+fg=#7C12AD</panel_attributes><additional_attributes>10;50;40;10</additional_attributes></element></diagram>
