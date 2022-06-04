@@ -1,4 +1,4 @@
-import { alterarImagem, inserirFilme } from '../repository/filmeRepository.js';
+import { alterarImagem, buscarPorId, inserirFilme, listartTodosFilme } from '../repository/filmeRepository.js';
 import { Router } from 'express';
 import multer from 'multer';
 
@@ -41,8 +41,30 @@ server.put('/filme/:id/capa', upload.single('capa'), async (req, resp) => {
     }
 });
 
+server.get('/filme', async (req, resp) => {
+    try {
+        const resposta = await listartTodosFilme();
+        resp.send(resposta);
+    } catch (error) {
+        resp.status(400).send({
+            err:error.message
+        });
+    }
+});
 
 
+server.get('/filme/:id', async (req, resp) => {
+    try {
+        const  id = Number(req.params.id);
+        const resposta = await buscarPorId(id);
+        if(!resposta) throw new Error('Filme não encontrado!');
 
+        resp.send(resposta);
+    } catch (error) {
+        resp.status(404).send({
+            err:error.message
+        });
+    }
+});
 
 export default server;

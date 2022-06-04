@@ -24,3 +24,33 @@ export async function alterarImagem(imagem, id) {
     
     return resposta.affectedRows;
 }
+
+export async function listartTodosFilme() {
+    const command = `
+        SELECT id_filme		id,
+            nm_filme		nome,
+            vl_avaliacao	avaliacao,
+            dt_lancamento	lancamento,
+            bt_disponivel	disponivel
+       FROM tb_filme;
+    `;
+
+    const [ linhas ] = await con.query(command);
+
+    return linhas;
+}
+
+export async function buscarPorId(id) {
+    const command = `
+        SELECT id_filme		id,
+            nm_filme		nome,
+            vl_avaliacao	avaliacao,
+            dt_lancamento	lancamento,
+            bt_disponivel	disponivel
+       FROM tb_filme
+       WHERE id_filme     = ?;
+    `;
+
+    const [linhas] = await con.query(command, [id]);
+    return linhas[0];
+}
