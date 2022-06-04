@@ -1,4 +1,4 @@
-import { alterarImagem, buscarPorId, inserirFilme, listartTodosFilme } from '../repository/filmeRepository.js';
+import { alterarFilme, alterarImagem, buscarPorId, buscarPorNome, deletarFilme, inserirFilme, listartTodosFilme } from '../repository/filmeRepository.js';
 import { Router } from 'express';
 import multer from 'multer';
 
@@ -13,7 +13,7 @@ server.post('/filme', async (req, resp) => {
         if(!novoFilme.sinopse) throw new Error('Sinopse do filme obrigatório!');
         if(!novoFilme.avaliacao) throw new Error('Avaliação do filme obrigatório!');
         if(!novoFilme.lancamento) throw new Error('Data de lançamento do filme obrigatório!');
-        if(!novoFilme.disponivel) throw new Error('Campo disponivel é obrigatório!');
+        if(novoFilme.disponivel === undefined) throw new Error('Campo disponivel é obrigatório!');
         if(!novoFilme.usuario) throw new Error('Usuario não logado!');
 
         const filmeInserido = await inserirFilme(novoFilme);
@@ -53,6 +53,21 @@ server.get('/filme', async (req, resp) => {
 });
 
 
+server.get('/filme/busca', async (req, resp) => {
+    try {
+        const  nome = req.query.nome;
+        const resposta = await buscarPorNome(nome);
+        if(!resposta) throw new Error('Filme não encontrado!');
+
+        resp.send(resposta);
+    } catch (error) {
+        resp.status(404).send({
+            err:error.message
+        });
+    }
+});
+
+
 server.get('/filme/:id', async (req, resp) => {
     try {
         const  id = Number(req.params.id);
@@ -67,4 +82,44 @@ server.get('/filme/:id', async (req, resp) => {
     }
 });
 
+
+server.delete('/filme/:id', async (req, resp) => {
+    try {
+        const  {id} = req.params;
+        const resposta = await deletarFilme(id);
+        if(!resposta) throw new Error('Filme não pode ser removido!');
+
+        resp.status(204).send();
+    } catch (error) {
+        resp.status(400).send({
+            err:error.message
+        });
+    }
+});
+
+
+server.put('/filme/:id', async (req, resp) => {
+    try {
+        const { id } = req.params;
+        const filme = req.body;
+        
+        if(!filme.nome) throw new Error('Nome do filme obrigatório!');
+        if(!filme.sinopse) throw new Error('Sinopse do filme obrigatório!');
+        if(!filme.avaliacao) throw new Error('Avaliação do filme obrigatório!');
+        if(!filme.lancamento) throw new Error('Data de lançamento do filme obrigatório!');
+        if(filme.disponivel == undefined) throw new Error('Campo disponivel é obrigatório!');
+        if(!filme.usuario) throw new Error('Usuario não logado!');
+
+        const resposta = await alterarFilme(id, filme);
+        if(resposta != 1) throw new Error('Filme não pode ser alterado!');
+        else resp.status(204).send();
+
+
+
+    }catch (error) {
+        resp.status(400).send({
+            err:error.message
+        });
+    }
+});
 export default server;
