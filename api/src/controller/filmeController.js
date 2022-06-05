@@ -19,9 +19,9 @@ server.post('/filme', async (req, resp) => {
         const filmeInserido = await inserirFilme(novoFilme);
         
         resp.send(filmeInserido);
-    }catch(err){
+    }catch(error){
         resp.status(400).send({
-            erro: err.message
+            error: error.message
         })
     }
 })
@@ -34,9 +34,9 @@ server.put('/filme/:id/capa', upload.single('capa'), async (req, resp) => {
         const resposta = await alterarImagem(imagem, id);
         if(resposta != 1) throw new Error('Imagem não pode ser salva');
         resp.status(204).send();  
-    } catch (err) {
+    } catch (error) {
         resp.status(400).send({
-            error: err.message
+            error: error.message
         });
     }
 });
@@ -47,7 +47,7 @@ server.get('/filme', async (req, resp) => {
         resp.send(resposta);
     } catch (error) {
         resp.status(400).send({
-            err:error.message
+            error:error.message
         });
     }
 });
@@ -62,7 +62,7 @@ server.get('/filme/busca', async (req, resp) => {
         resp.send(resposta);
     } catch (error) {
         resp.status(404).send({
-            err:error.message
+            error:error.message
         });
     }
 });
@@ -77,7 +77,7 @@ server.get('/filme/:id', async (req, resp) => {
         resp.send(resposta);
     } catch (error) {
         resp.status(404).send({
-            err:error.message
+            error:error.message
         });
     }
 });
@@ -92,7 +92,7 @@ server.delete('/filme/:id', async (req, resp) => {
         resp.status(204).send();
     } catch (error) {
         resp.status(400).send({
-            err:error.message
+            error:error.message
         });
     }
 });
@@ -118,7 +118,7 @@ server.put('/filme/:id', async (req, resp) => {
 
     }catch (error) {
         resp.status(400).send({
-            err:error.message
+            error:error.message
         });
     }
 });
