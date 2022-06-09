@@ -13,7 +13,7 @@ export default function Index() {
         if(!storage('usuario-logado')) {
             navigate('/');
         }else {
-           const usuarioLogado = storage('usuario-logado');
+            const usuarioLogado = storage('usuario-logado');
             setUsuario(usuarioLogado.nome);
         }
     },[])
